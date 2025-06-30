@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Danilo | Backend Dev & Data Analyst</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Reset e Estilos Base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #f5f5f5;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* Header Aprimorado */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 3rem;
+      background: rgba(15, 24, 26, 0.9);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    header img {
+      height: 45px;
+      transition: transform 0.3s ease;
+      filter: brightness(0) saturate(100%) invert(78%) sepia(49%) saturate(2012%) hue-rotate(142deg) brightness(101%) contrast(101%);
+    }
+
+    header img:hover {
+      transform: scale(1.05);
+    }
+
+    nav ul {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    nav a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      padding: 0.5rem 0;
+      position: relative;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: #00e0ff;
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #00e0ff;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* Seção Principal Aprimorada */
+    main {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 6rem 2rem;
+      flex-wrap: wrap;
+      gap: 3rem;
+      min-height: 80vh;
+    }
+
+    main img {
+      width: 350px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+      border: 3px solid rgba(0, 224, 255, 0.1);
+    }
+
+    main img:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0, 224, 255, 0.3);
+    }
+
+    .intro-text {
+      max-width: 550px;
+    }
+
+    .intro-text h1 {
+      font-family: 'Fira Code', monospace;
+      font-size: 2.8rem;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+      background: linear-gradient(90deg, #ffffff, #00e0ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      line-height: 1.2;
+    }
+
+    .intro-text p {
+      margin: 1rem 0;
+      font-size: 1.2rem;
+      color: #e0e0e0;
+    }
+
+    .intro-text p:first-of-type {
+      font-weight: 500;
+      color: #00e0ff;
+    }
+
+    .tech-icons {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .tech-icons i {
+      font-size: 2.5rem;
+      color: #00e0ff;
+      transition: transform 0.3s ease;
+    }
+
+    .tech-icons i:hover {
+      transform: scale(1.2);
+    }
+
+    /* Seções Aprimoradas */
+    section {
+      padding: 5rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    h2.subtitulo {
+      font-size: 2.5rem;
+      color: #00e0ff;
+      margin-bottom: 2rem;
+      position: relative;
+      display: inline-block;
+      font-weight: 600;
+    }
+
+    h2.subtitulo::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #00e0ff, transparent);
+      border-radius: 2px;
+    }
+
+    .experiencia-texto,
+    .formacao-texto p {
+      margin-bottom: 3rem;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e0e0e0;
+      max-width: 800px;
+    }
+
+    /* Projetos Aprimorados */
+    .portfolio-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .portfolio-item {
+      background: rgba(30, 42, 56, 0.7);
+      border-radius: 15px;
+      padding: 1.5rem;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+      transition: all 0.4s ease;
+      border: 1px solid rgba(0, 224, 255, 0.1);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      overflow: hidden;
+    }
+
+    .portfolio-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 224, 255, 0.2);
+      border-color: rgba(0, 224, 255, 0.3);
+    }
+
+    .portfolio-titulo {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #00e0ff;
+      font-weight: 600;
+    }
+
+    .portfolio-descricao {
+      margin: 1rem 0;
+      color: #d0d0d0;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .portfolio-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1rem 0;
+    }
+
+    .tech-tag {
+      background: rgba(0, 224, 255, 0.1);
+      color: #00e0ff;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    .portfolio-img-container {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 1rem;
+    }
+
+    .portfolio-img {
+      width: 100%;
+      border-radius: 10px;
+      transition: transform 0.5s ease;
+      display: block;
+    }
+
+    .portfolio-item:hover .portfolio-img {
+      transform: scale(1.05);
+    }
+
+    .portfolio-botao-container {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .portfolio-botao {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 0;
+      background: #00e0ff;
+      color: #0f2027;
+      padding: 0.7rem 1.5rem;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      flex: 1;
+    }
+
+    .portfolio-botao:hover {
+      background: #00bcd4;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 188, 212, 0.4);
+    }
+
+    .portfolio-botao i {
+      font-size: 1rem;
+    }
+
+    /* Formação Aprimorada */
+    .formacao-extra {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .quadrado {
+      background-color: rgba(30, 42, 56, 0.7);
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(0, 224, 255, 0.1);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+    }
+
+    .quadrado:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 224, 255, 0.2);
+    }
+
+    .quadrado h3 {
+      color: #00e0ff;
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .quadrado h4 {
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+
+    .quadrado p, .quadrado ul {
+      font-size: 1rem;
+      color: #e0e0e0;
+      line-height: 1.6;
+    }
+
+    .quadrado ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .quadrado li {
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .quadrado li::before {
+      content: '▹';
+      color: #00e0ff;
+    }
+
+    .quadrado span {
+      font-weight: 600;
+      color: #00e0ff;
+    }
+
+    /* Certificações Aprimoradas */
+    .certificacoes-lista {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 1.5rem;
+    }
+    
+    .certificacoes-lista li {
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(0, 224, 255, 0.1);
+    }
+    
+    .certificacoes-lista li:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+    
+    .certificacao-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .certificacao-icon {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    
+    .certificacao-icon i {
+      font-size: 1.2rem;
+    }
+    
+    .certificacao-info h4 {
+      color: #ffffff;
+      font-size: 1.1rem;
+      margin-bottom: 0.3rem;
+      font-weight: 600;
+    }
+    
+    .certificacao-info p {
+      color: #b0b0b0;
+      font-size: 0.9rem;
+      margin: 0;
+    }
+    
+    .quadrado h3 i {
+      margin-right: 0.5rem;
+      color: #00e0ff;
+    }
+
+    /* Footer Aprimorado */
+    footer {
+      text-align: center;
+      padding: 4rem 2rem;
+      background-color: rgba(15, 32, 39, 0.9);
+      border-top: 1px solid rgba(0, 224, 255, 0.2);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+    }
+
+    footer h2 {
+      color: #00e0ff;
+      margin-bottom: 2rem;
+      font-size: 2.2rem;
+    }
+
+    .contato-texto {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      color: #e0e0e0;
+    }
+
+    .contato-texto strong {
+      color: #00e0ff;
+      font-weight: 600;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      background: rgba(0, 224, 255, 0.1);
+      border-radius: 50%;
+      color: #00e0ff;
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .social-link:hover {
+      background: #00e0ff;
+      color: #0f2027;
+      transform: translateY(-5px);
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      header {
+        padding: 1rem 1.5rem;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      nav ul {
+        gap: 1.5rem;
+      }
+
+      main {
+        padding: 4rem 1.5rem;
+        text-align: center;
+      }
+
+      .intro-text h1 {
+        font-size: 2.2rem;
+      }
+
+      .tech-icons {
+        justify-content: center;
+      }
+
+      section {
+        padding: 3rem 1.5rem;
+      }
+
+      h2.subtitulo {
+        font-size: 2rem;
+      }
+
+      .portfolio-container {
+        grid-template-columns: 1fr;
+      }
+
+      .portfolio-botao-container {
+        flex-direction: column;
+      }
+    }
+
+    /* Efeitos de Foco */
+    :focus {
+      outline: 2px solid #00e0ff;
+      outline-offset: 3px;
+    }
+
+    /* Animação de Destaque */
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(0, 224, 255, 0.4); }
+      70% { box-shadow: 0 0 0 15px rgba(0, 224, 255, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(0, 224, 255, 0); }
+    }
+
+    .highlight {
+      animation: pulse 2s infinite;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="{{ url_for('static', filename='img/DANILO.png') }}" alt="Marca Danilo">
+    <nav>
+      <ul>
+        <li><a href="#experiencia">Experiência</a></li>
+        <li><a href="#formacao">Formação</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+    {% block content %}{% endblock %}
+  </header>
+
+  <main>
+    <img alt="Foto Danilo" src="{{ url_for('static', filename='img/Danilof.jpg') }}" class="highlight">
+
+    <div class="intro-text">
+      <h1>Danilo Araujo</h1>
+      <p>Backend Developer & Data Analyst</p>
+      <p>Desenvolvo soluções robustas e escaláveis com Python,Django,Flask e C#</p>
+      <p>Transformo dados em insights valiosos com Power BI e SQL</p>
+      <p>Localizado em Aracaju-SE 🏖</p>
+      
+      <div class="tech-icons">
+        <i class="fab fa-python" title="Python"></i>
+        <i class="fas fa-database" title="SQL"></i>
+        <i class="fab fa-microsoft" title="Power BI"></i>
+        <i class="fab fa-git-alt" title="Git"></i>
+      </div>
+    </div>
+  </main>
+
+  <section id="experiencia">
+    <h2 class="subtitulo">Experiência</h2>
+    <p class="experiencia-texto">Especializado em desenvolvimento backend e análise de dados, com experiência em projetos reais envolvendo Python, C#, APIs, Power BI e SQL. Combino habilidades técnicas com visão analítica para criar soluções eficientes e baseadas em dados.</p>
+
+    <div class="portfolio-container">
+      <div class="portfolio-item">
+        <h3 class="portfolio-titulo">BRDEV Concessionária</h3>
+        <p class="portfolio-descricao">Sistema completo para concessionária de carros de alto padrão, com gestão de estoque, clientes e vendas. Integração com APIs de pagamento e relatórios personalizados.</p>
+        <div class="portfolio-tech">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">Django</span>
+          <span class="tech-tag">PostgreSQL</span>
+          <span class="tech-tag">Azure</span>
+        </div>
+        <div class="portfolio-img-container">
+          <img src="{{ url_for('static', filename='img/edf.gif') }}" alt="BRDEV Concessionária" class="portfolio-img">
+        </div>
+        <div class="portfolio-botao-container">
+          <a href="https://github.com/Danilooar/BRDEV_CAR/tree/main" target="_blank" class="portfolio-botao"><i class="fas fa-code"></i> Código</a>
+          <a href="#" target="_blank" class="portfolio-botao"><i class="fas fa-external-link-alt"></i> Demo</a>
+        </div>
+      </div>
+
+      <div class="portfolio-item">
+        <h3 class="portfolio-titulo">Análise de Dados - Varejo</h3>
+        <p class="portfolio-descricao">Dashboard interativo para análise de desempenho de vendas, estoque e comportamento do cliente. ETL completo com Python e visualizações dinâmicas no Power BI.</p>
+        <div class="portfolio-tech">
+          <span class="tech-tag">Power BI</span>
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">DAX</span>
+          <span class="tech-tag">ETL</span>
+        </div>
+        <div class="portfolio-img-container">
+          <img src="{{ url_for('static', filename='img/dashboard.gif')  }} " alt="Dashboard Power BI" class="portfolio-img">
+        </div>
+        <div class="portfolio-botao-container">
+          <a href="https://github.com/Danilooar/projeto-powerbi" target="_blank" class="portfolio-botao"><i class="fas fa-code"></i> Repositório</a>
+          <a href="https://app.powerbi.com/groups/me/reports/557943aa-5e8a-4cff-afe9-b3c3b7a2f0bb/ReportSection?experience=power-bi" target="_blank" class="portfolio-botao"><i class="fas fa-chart-bar"></i> Relatório</a>
+        </div>
+      </div>
+
+      <div class="portfolio-item">
+        <h3 class="portfolio-titulo">BRDEV Estoque</h3>
+        <p class="portfolio-descricao">Sistema de gestão de estoque para lojas com controle de entradas/saídas, alertas de reposição e integração com leitor de código de barras. Relatórios em tempo real.</p>
+        <div class="portfolio-tech">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">Flask</span>
+          <span class="tech-tag">MySQL</span>
+          <span class="tech-tag">JavaScript</span>
+        </div>
+        <div class="portfolio-img-container">
+          <img src="{{ url_for('static', filename='img/PRODUCT.gif') }}" alt="BRDEV Estoque" class="portfolio-img">
+        </div>
+        <div class="portfolio-botao-container">
+          <a href="#" target="_blank" class="portfolio-botao"><i class="fas fa-code"></i> Código</a>
+          <a href="#" target="_blank" class="portfolio-botao"><i class="fas fa-external-link-alt"></i> Demo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="formacao">
+    <h2 class="subtitulo">Formação</h2>
+    <div class="formacao-texto">
+      <p>Graduado em <strong>Análise e Desenvolvimento de Sistemas</strong> com especialização em <strong>Inteligência Artificial</strong>. Mantenho-me atualizado através de cursos intensivos e certificações relevantes para o mercado.</p>
+    </div>
+
+    <div class="formacao-extra">
+      <div class="quadrado">
+        <h3><i class="fas fa-graduation-cap"></i> Especialização</h3>
+        <h4>Inteligência Artificial</h4>
+        <p>FIAP- 2023</p>
+        <p>Foco em machine learning e processamento de dados em larga escala.</p>
+      </div>
+
+      <div class="quadrado">
+        <h3><i class="fas fa-university"></i> Graduação</h3>
+        <h4>Análise e Desenvolvimento de Sistemas</h4>
+        <p>Unialselvi - 2022</p>
+        <p>Formação completa em Ánalise e desenvolvimento de sistemas e gestão de projetos.</p>
+      </div>
+
+      <div class="quadrado">
+        <h3><i class="fas fa-certificate"></i> Certificações</h3>
+        <ul class="certificacoes-lista">
+          <li>
+            <div class="certificacao-item">
+              <div class="certificacao-icon" style="background: rgba(86, 61, 124, 0.1);">
+                <i class="fab fa-microsoft" style="color: #8664c6;"></i>
+              </div>
+              <div class="certificacao-info">
+                <h4>Power BI Completo</h4>
+                <p>Data Science Academy - 2023</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="certificacao-item">
+              <div class="certificacao-icon" style="background: rgba(66, 133, 244, 0.1);">
+                <i class="fab fa-google" style="color: #4285F4;"></i>
+              </div>
+              <div class="certificacao-info">
+                <h4>Fundamentos de Dados</h4>
+                <p>Google - 2022</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="certificacao-item">
+              <div class="certificacao-icon" style="background: rgba(0, 117, 143, 0.1);">
+                <i class="fas fa-database" style="color: #00758f;"></i>
+              </div>
+              <div class="certificacao-info">
+                <h4>SQL Completo</h4>
+                <p>Udemy - 2023</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="certificacao-item">
+              <div class="certificacao-icon" style="background: rgba(53, 114, 165, 0.1);">
+                <i class="fab fa-python" style="color: #3572A5;"></i>
+              </div>
+              <div class="certificacao-info">
+                <h4>Python para Data Science</h4>
+                <p>FIAP - 2023</p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="quadrado">
+        <h3><i class="fas fa-language"></i> Idiomas</h3>
+        <ul>
+          <li>Inglês <span>/ Intermediário-Avançado</span></li>
+          <li>Espanhol <span>/ Básico</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contato">
+    <h2>Vamos conversar?</h2>
+    <p class="contato-texto">Estou disponível para novos projetos e oportunidades. Entre em contato!</p>
+    <p class="contato-texto"><strong><i class="fas fa-phone"></i> (79) 9-8836-2644</strong></p>
+    <p class="contato-texto"><strong><i class="fas fa-envelope"></i> Devdanilobr@gmail.com</strong></p>
+    
+    <div class="social-links">
+      <a href="https://github.com/Danilooar" target="_blank" class="social-link" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="www.linkedin.com/in/devdanilo" target="_blank" class="social-link" aria-label="LinkedIn">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+      <a href="#" class="social-link" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+      <a href="#" class="social-link" aria-label="Currículo">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+    </div>
+  </footer>
+</body>
+</html>
