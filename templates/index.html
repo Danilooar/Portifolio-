@@ -416,57 +416,108 @@
       color: #00e0ff;
     }
 
-    /* Footer Aprimorado */
-    footer {
-      text-align: center;
+    /* Footer Profissional */
+    .footer-authority {
+      background: linear-gradient(135deg, #0a192f 0%, #172a45 100%);
       padding: 4rem 2rem;
-      background-color: rgba(15, 32, 39, 0.9);
-      border-top: 1px solid rgba(0, 224, 255, 0.2);
-      backdrop-filter: blur(5px);
-      -webkit-backdrop-filter: blur(5px);
+      border-top: 1px solid rgba(100, 255, 218, 0.1);
+      color: #ccd6f6;
+      font-family: 'Inter', sans-serif;
     }
-
-    footer h2 {
-      color: #00e0ff;
-      margin-bottom: 2rem;
+    
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    
+    .footer-headline {
       font-size: 2.2rem;
-    }
-
-    .contato-texto {
-      font-size: 1.2rem;
       margin-bottom: 1rem;
-      color: #e0e0e0;
+      background: linear-gradient(90deg, #64ffda, #00e0ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      font-weight: 700;
+      letter-spacing: -0.5px;
     }
-
-    .contato-texto strong {
-      color: #00e0ff;
-      font-weight: 600;
+    
+    .footer-subheadline {
+      font-size: 1.2rem;
+      margin-bottom: 3rem;
+      opacity: 0.9;
+      font-weight: 400;
     }
-
-    .social-links {
+    
+    .contact-channels {
       display: flex;
       justify-content: center;
-      gap: 2rem;
-      margin-top: 2rem;
+      gap: 1.8rem;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
     }
-
-    .social-link {
+    
+    .channel-icon {
+      position: relative;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 50px;
-      height: 50px;
-      background: rgba(0, 224, 255, 0.1);
-      border-radius: 50%;
-      color: #00e0ff;
+      background: rgba(100, 255, 218, 0.05);
+      color: #64ffda;
       font-size: 1.5rem;
-      transition: all 0.3s ease;
+      transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+      border: 1px solid rgba(100, 255, 218, 0.1);
     }
-
-    .social-link:hover {
-      background: #00e0ff;
-      color: #0f2027;
+    
+    .channel-icon:hover {
+      background: rgba(100, 255, 218, 0.1);
       transform: translateY(-5px);
+      color: #00e0ff;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    .channel-icon .tooltip {
+      position: absolute;
+      bottom: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #112240;
+      color: #64ffda;
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      opacity: 0;
+      transition: opacity 0.3s;
+      white-space: nowrap;
+      pointer-events: none;
+      border: 1px solid rgba(100, 255, 218, 0.2);
+    }
+    
+    .channel-icon:hover .tooltip {
+      opacity: 1;
+    }
+    
+    .footer-signature {
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(100, 255, 218, 0.1);
+    }
+    
+    .copyright {
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+      color: #8892b0;
+    }
+    
+    .tech-stamp {
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #64ffda;
+      opacity: 0.7;
     }
 
     /* Responsividade */
@@ -509,6 +560,20 @@
       .portfolio-botao-container {
         flex-direction: column;
       }
+      
+      .footer-headline {
+        font-size: 1.8rem;
+      }
+      
+      .footer-subheadline {
+        font-size: 1rem;
+      }
+      
+      .channel-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+      }
     }
 
     /* Efeitos de Foco */
@@ -531,7 +596,7 @@
 </head>
 <body>
   <header>
-    <img src="{{ url_for('static', filename='img/DANILO.png') }}" alt="Marca Danilo">
+    <img src="/static/img/DANILO.png" alt="Marca Danilo">
     <nav>
       <ul>
         <li><a href="#experiencia">Experiência</a></li>
@@ -539,16 +604,15 @@
         <li><a href="#contato">Contato</a></li>
       </ul>
     </nav>
-    {% block content %}{% endblock %}
   </header>
 
   <main>
-    <img alt="Foto Danilo" src="{{ url_for('static', filename='img/Danilof.jpg') }}" class="highlight">
+    <img src="static/img/Danilof.jpg" alt="Foto Danilo">
 
     <div class="intro-text">
       <h1>Danilo Araujo</h1>
       <p>Backend Developer & Data Analyst</p>
-      <p>Desenvolvo soluções robustas e escaláveis com Python,Django,Flask e C#</p>
+      <p>Desenvolvo soluções robustas e escaláveis com Python, Django, Flask e C#</p>
       <p>Transformo dados em insights valiosos com Power BI e SQL</p>
       <p>Localizado em Aracaju-SE 🏖</p>
       
@@ -576,7 +640,7 @@
           <span class="tech-tag">Azure</span>
         </div>
         <div class="portfolio-img-container">
-          <img src="{{ url_for('static', filename='img/edf.gif') }}" alt="BRDEV Concessionária" class="portfolio-img">
+          <img src="static/img/edf.gif" alt="BRDEV Concessionária" class="portfolio-img">
         </div>
         <div class="portfolio-botao-container">
           <a href="https://github.com/Danilooar/BRDEV_CAR/tree/main" target="_blank" class="portfolio-botao"><i class="fas fa-code"></i> Código</a>
@@ -594,7 +658,7 @@
           <span class="tech-tag">ETL</span>
         </div>
         <div class="portfolio-img-container">
-          <img src="{{ url_for('static', filename='img/dashboard.gif')  }} " alt="Dashboard Power BI" class="portfolio-img">
+          <img src="static/img/Dashboard.gif" alt="Dashboard Power BI" class="portfolio-img">
         </div>
         <div class="portfolio-botao-container">
           <a href="https://github.com/Danilooar/projeto-powerbi" target="_blank" class="portfolio-botao"><i class="fas fa-code"></i> Repositório</a>
@@ -612,7 +676,7 @@
           <span class="tech-tag">JavaScript</span>
         </div>
         <div class="portfolio-img-container">
-          <img src="{{ url_for('static', filename='img/PRODUCT.gif') }}" alt="BRDEV Estoque" class="portfolio-img">
+          <img src="static/img/PRODUCT.gif" alt="BRDEV Estoque" class="portfolio-img">
         </div>
         <div class="portfolio-botao-container">
           <a href="#" target="_blank" class="portfolio-botao"><i class="fas fa-code"></i> Código</a>
@@ -632,15 +696,15 @@
       <div class="quadrado">
         <h3><i class="fas fa-graduation-cap"></i> Especialização</h3>
         <h4>Inteligência Artificial</h4>
-        <p>FIAP- 2023</p>
+        <p>FIAP - 2024</p>
         <p>Foco em machine learning e processamento de dados em larga escala.</p>
       </div>
 
       <div class="quadrado">
         <h3><i class="fas fa-university"></i> Graduação</h3>
         <h4>Análise e Desenvolvimento de Sistemas</h4>
-        <p>Unialselvi - 2022</p>
-        <p>Formação completa em Ánalise e desenvolvimento de sistemas e gestão de projetos.</p>
+        <p>Unialselvi - 2025</p>
+        <p>Formação completa em desenvolvimento de sistemas e gestão de projetos.</p>
       </div>
 
       <div class="quadrado">
@@ -703,26 +767,54 @@
     </div>
   </section>
 
-  <footer id="contato">
-    <h2>Vamos conversar?</h2>
-    <p class="contato-texto">Estou disponível para novos projetos e oportunidades. Entre em contato!</p>
-    <p class="contato-texto"><strong><i class="fas fa-phone"></i> (79) 9-8836-2644</strong></p>
-    <p class="contato-texto"><strong><i class="fas fa-envelope"></i> Devdanilobr@gmail.com</strong></p>
-    
-    <div class="social-links">
-      <a href="https://github.com/Danilooar" target="_blank" class="social-link" aria-label="GitHub">
-        <i class="fab fa-github"></i>
-      </a>
-      <a href="www.linkedin.com/in/devdanilo" target="_blank" class="social-link" aria-label="LinkedIn">
-        <i class="fab fa-linkedin-in"></i>
-      </a>
-      <a href="#" class="social-link" aria-label="WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-      </a>
-      <a href="#" class="social-link" aria-label="Currículo">
-        <i class="fas fa-file-pdf"></i>
-      </a>
+  <footer id="contato" class="footer-authority">
+    <div class="footer-container">
+      <h2 class="footer-headline">Transforme Sua Visão em Realidade Digital</h2>
+      <p class="footer-subheadline">Soluções técnicas precisas para desafios complexos</p>
+      
+      <div class="contact-channels">
+  
+        <!-- E-mail -->
+        <a href="mailto:devdanilobr@gmail.com?subject=Proposta%20de%20Projeto&body=Precisamos%20de%20sua%20expertise%20técnica..." class="channel-icon" aria-label="Enviar e-mail para devdanilobr@gmail.com">
+          <i class="fas fa-envelope"></i>
+          <span class="tooltip">Entre em contato por email</span>
+        </a>
+        
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/in/devdanilo" target="_blank" rel="noopener noreferrer" class="channel-icon" aria-label="Perfil no LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+          <span class="tooltip">Conecte-se profissionalmente</span>
+        </a>
+        
+        <!-- GitHub -->
+        <a href="https://github.com/Danilooar" target="_blank" rel="noopener noreferrer" class="channel-icon" aria-label="Repositórios no GitHub">
+          <i class="fab fa-github"></i>
+          <span class="tooltip">Explore meu código</span>
+        </a>
+        
+        <!-- WhatsApp -->
+        <a href="https://wa.me/5579988362644?text=Gostaria%20de%20conversar%20sobre%20um%20projeto..." target="_blank" rel="noopener noreferrer" class="channel-icon" aria-label="Enviar mensagem no WhatsApp">
+          <i class="fab fa-whatsapp"></i>
+          <span class="tooltip">Conversa rápida</span>
+        </a>
+        
+        <!-- Currículo -->
+        <a href="https://drive.google.com/file/d/1QqA7u0rftJv8RdYQu_MDqGMenBgG91VW/view?usp=drive_link" class="channel-icon" aria-label="Baixar currículo">
+          <i class="fas fa-file-pdf"></i>
+          <span class="tooltip">Meu histórico técnico</span>
+        </a>
+      </div>
+      
+      <div class="footer-signature">
+        <p class="copyright">© <span id="current-year"></span> Danilo Araújo | Arquitetura de Soluções Digitais</p>
+        <p class="tech-stamp">Tecnologia precisa. Implementação impecável.</p>
+      </div>
     </div>
   </footer>
+
+  <script>
+    // Atualiza o ano automaticamente
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>

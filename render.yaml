@@ -1,6 +1,0 @@
-Nome: meu-portfolio
-Branch: main
-Runtime: Python 3
-Build Command: pip install -r requirements.txt
-Start Command: gunicorn app:app
-Plano: Free
