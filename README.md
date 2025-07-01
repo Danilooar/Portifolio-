@@ -18,7 +18,7 @@
 ## 📸 Preview
 
 ![portfolio-preview](https://user-images.githubusercontent.com/your-preview-image.png)  
-*Obs: Substitua por um print ou GIF real do seu site.*
+
 
 ---
 
