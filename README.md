@@ -56,17 +56,3 @@
 
 ---
 
-## ⚙️ Como Rodar Localmente
-
-```bash
-# Clone este repositório
-git clone https://github.com/SEU_USUARIO/SEU_REPOSITORIO.git
-
-# Acesse a pasta do projeto
-cd SEU_REPOSITORIO
-
-# Instale as dependências
-npm install
-
-# Inicie o servidor de desenvolvimento
-npm run dev
